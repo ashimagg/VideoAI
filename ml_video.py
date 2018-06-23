@@ -10,6 +10,8 @@ while(True):
     faces = detector.detectMultiScale(gray, 1.3, 5)
     for (x,y,w,h) in faces:
         cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+        crop_img = img[y:y+h, x:x+w]
+        cv2.imwrite('test.png',crop_img)
 
     cv2.imshow('frame',img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
